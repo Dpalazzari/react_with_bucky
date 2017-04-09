@@ -59,15 +59,13 @@
       var Board = React.createClass({
         getInitialState: function(){
           return {
-            comments: [
-              "Hey my name is Drew.",
-              "I like Stephanie.",
-              "I want chicken pasta.",
-              "I like biking.",
-              "I need a job.",
-              "I am excited for the future."
-            ]
+            comments: []
           }
+        },
+        add: function(text){
+          var arr = this.state.comments;
+          arr.push(text);
+          this.setState({comments: arr});
         },
         removeComment: function(i){
           console.log("Removing comment: " + i);
@@ -89,8 +87,11 @@
         },
         render: function(){
           return(
-            <div className='board'>
-              {this.state.comments.map(this.eachComment)}
+            <div>
+              <button onClick={this.add.bind(null, 'Write comment here...')} className="button-info create">Add New</button>
+              <div className='board'>
+                {this.state.comments.map(this.eachComment)}
+              </div>
             </div>
           );
         }
