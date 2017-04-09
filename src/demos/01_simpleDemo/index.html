@@ -12,7 +12,21 @@
     <div id="example"></div>
     <script type="text/babel">
       // Translates everything to normal JS for browser
-      ReactDOM.render(<h1>Drew loves Steph!</h1>, document.getElementById('example'));
+      var Bacon = React.createClass({
+        render: function(){
+          return (
+            <div>
+              <h3>Bacon component!</h3>
+              <p>I am some sample text.</p>
+            </div>
+          );
+        }
+      });
+      ReactDOM.render(<div>
+          <Bacon />
+          <Bacon />
+          <Bacon />
+        </div>, document.getElementById('example'));
     </script>
   </body>
 </html>
