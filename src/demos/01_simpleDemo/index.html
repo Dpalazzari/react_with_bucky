@@ -54,13 +54,35 @@
           }
         }
       });
-      ReactDOM.render(
-        <div className='board'>
-          <Comment>Hey, my name is Drew</Comment>
-          <Comment>Hey, my name is Steph</Comment>
-          <Comment>Hey, my name is Bucky</Comment>
-        </div>
-        , document.getElementById('container'));
+
+      var Board = React.createClass({
+        getInitialState: function(){
+          return {
+            comments: [
+              "Hey my name is Drew.",
+              "I like Stephanie.",
+              "I want chicken pasta.",
+              "I like biking.",
+              "I need a job.",
+              "I am excited for the future."
+            ]
+          }
+        },
+
+        render: function(){
+          return(
+            <div className='board'>
+              {
+                this.state.comments.map(function(text, i){
+                  return (<Comment key={i} >{text}</Comment>);
+                })
+              }
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(<Board />, document.getElementById('container'));
     </script>
   </body>
 </html>
